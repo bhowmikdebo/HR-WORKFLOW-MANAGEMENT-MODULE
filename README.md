@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A modular, scalable workflow builder designed for HR teams to visually create, validate, and simulate business processes. The system emphasizes clean architecture, real-time interaction, and extensibility, closely reflecting production-grade frontend system design.
+A flexible, scalable workflow builder designed for HR teams to visually create, validate, and simulate business processes. The system focuses on clean architecture, real-time interaction, and extensibility, closely reflecting professional-grade frontend system design.
 
 ---
 
@@ -58,7 +58,7 @@ Interactive UI for building and testing workflows:
 
 * Canvas-based graph editor
 * Sidebar for configuration and analytics
-* Simulation panel for execution results
+* Simulation panel to execute results
 
 ---
 
@@ -68,7 +68,7 @@ Interactive UI for building and testing workflows:
 
 ## What You See in the Preview Photo
 
-* Central workflow canvas with nodes and connections
+* Central workflow canvas showing nodes and connections
 * Left panel: node palette (drag-and-drop elements)
 * Right panel: node configuration / insights
 * Top/controls: workflow mode & actions
