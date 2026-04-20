@@ -50,7 +50,7 @@ Illustrates how a workflow is built and executed:
 4. Workflow is simulated via sandbox
 5. Results are analyzed through insights panel
 
----
+<img src="images/workflow design.jpeg" width="600" height="400" />
 
 ## Preview
 
