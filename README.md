@@ -112,6 +112,187 @@ Design principles used:
 - Feature-first component decomposition
 - Premium UI with gradients, shadows, transitions
 
+## Architecture Diagram
+
+```plantuml
+@startuml HR_Workflow_Architecture
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam arrowColor #333333
+skinparam componentBackgroundColor #E1F5FF
+skinparam componentBorderColor #01579B
+
+title HR Workflow Management Module - Architecture
+
+package "Application Layer" #FFE0B2 {
+    component App as app [
+        App Component
+        ----
+        • State Management
+        • Node/Edge Management
+        • Undo/Redo History
+        • Mode: Build/Review
+    ]
+}
+
+package "UI Components" #E1F5FF {
+    component Canvas as canvas [
+        WorkflowCanvas
+        ----
+        React Flow Integration
+        Node Rendering
+        Edge Management
+    ]
+    
+    component Nodes as nodes [
+        Node Components
+        ----
+        StartNode
+        EndNode
+        TaskNode
+        ApprovalNode
+        AutomatedNode
+    ]
+    
+    component Forms as forms [
+        NodeFormPanel
+        ----
+        Node Configuration
+        Property Editing
+        Field Validation
+    ]
+    
+    component Palette as palette [
+        NodePalette
+        ----
+        Node Templates
+        Search & Filter
+        Drag-Drop
+    ]
+    
+    component Sidebar as sidebar [
+        Sidebar Panels
+        ----
+        Inspector
+        Analytics/Insights
+    ]
+}
+
+package "Analytics & Insights" #C8E6C9 {
+    component Performance as perf [
+        PerformanceInsights
+        ----
+        Workflow Metrics
+        Execution Stats
+        Simulation Results
+    ]
+    
+    component Sandbox as sandbox [
+        SandboxPanel
+        ----
+        Workflow Testing
+        Simulation Execution
+        Result Display
+    ]
+}
+
+package "Business Logic" #FFCCBC {
+    component Validation as valid [
+        graphValidation
+        ----
+        Workflow Structure
+        Node Connectivity
+        Cycle Detection
+    ]
+}
+
+package "Data & Types" #F3E5F5 {
+    component Types as types [
+        workflow.ts
+        ----
+        WorkflowNode
+        WorkflowEdge
+        WorkflowGraph
+        AutomationAction
+        SimulationResult
+    ]
+}
+
+package "API Layer" #BBDEFB {
+    component API as api [
+        mockApi
+        ----
+        getAutomations()
+        simulate()
+    ]
+}
+
+package "External Libraries" #E0E0E0 {
+    component XYFlow [
+        @xyflow/react
+        ----
+        React Flow
+        Graph Rendering
+    ]
+    
+    component React as react [
+        React Ecosystem
+        ----
+        React
+        React-DOM
+    ]
+}
+
+' Relationships
+app --> canvas : renders
+app --> Forms : updates node data
+app --> Palette : provides templates
+app --> sidebar : manages state
+app --> API : fetches actions
+app --> Validation : validates workflow
+
+canvas --> Nodes : renders
+canvas --> XYFlow : uses
+
+Nodes --> types : extends
+Forms --> types : updates
+Palette --> types : creates
+sidebar --> Performance : displays
+sidebar --> Sandbox : executes
+
+Sandbox --> API : calls simulate()
+Performance --> Validation : uses results
+
+API --> Validation : validates before sim
+API --> types : returns
+
+Validation --> types : uses
+
+React --> XYFlow : powers
+
+note right of app
+  Central Hub
+  Manages state, history
+  Coordinates all components
+end note
+
+note right of API
+  Mock Backend
+  Simulates server responses
+  Provides automation actions
+end note
+
+note bottom of Types
+  Shared Data Models
+  Type Safety with TypeScript
+end note
+@enduml
+```
+
+**View this diagram online:**
+- PlantUML Editor: https://www.plantuml.com/plantuml/uml/
+- VS Code Extension: Install "PlantUML" (jebbs.plantuml)
+
 ## Tech stack
 - React 18
 - TypeScript
