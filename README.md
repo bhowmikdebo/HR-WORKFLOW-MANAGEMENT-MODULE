@@ -38,7 +38,7 @@ Represents a layered frontend architecture:
 * Data & Types (TypeScript models)
 * External Libraries (React + graph rendering)
 
----
+<img src="images/architechture design.jpeg" width="600" height="400" />
 
 ## Workflow Diagram
 
@@ -63,8 +63,8 @@ Interactive UI for building and testing workflows:
 ---
 
 ## Preview Photo
-<img src="images/architechture design.jpeg" width="600" height="400" />
 
+<img src="images/image.png" width="600" height="400" />
 
 ## What You See in the Preview Photo
 
